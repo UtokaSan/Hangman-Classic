@@ -11,14 +11,8 @@ import (
 func ChooseWord() {
 	data, _ := ioutil.ReadFile("words/words.txt")
 	file := string(data)
-	line := 0
 	temp := strings.Split(file, "\n")
 	l := len(temp)
-	for _, item := range temp {
-		fmt.Println("[", line, "]\t", item)
-		line++
-	}
-	fmt.Println(l)
 }
 
 func main() {
@@ -28,5 +22,6 @@ func main() {
 	l := len(temp)
 	ChooseWord()
 	rand.Seed(time.Now().UnixNano())
-	fmt.Println(rand.Intn(l))
+	j := rand.Intn(l)
+	fmt.Print(j)
 }
