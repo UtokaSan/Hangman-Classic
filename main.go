@@ -5,11 +5,9 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"strings"
-	"time"
 )
 
 func Random(nbr int) int {
-	rand.Seed(time.Now().Unix())
 	return rand.Intn(nbr)
 }
 func readFile() {
@@ -17,7 +15,8 @@ func readFile() {
 	str := string(data)
 	split := strings.Split(str, "\n")
 	random := Random(len(split))
-	fmt.Print(split[random])
+	word := split[random]
+	fmt.Print(word)
 }
 
 func main() {
