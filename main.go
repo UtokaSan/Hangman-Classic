@@ -2,36 +2,31 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"os"
+	"io/ioutil"
+	"math/rand"
+	"strings"
+	"time"
 )
 
-var path = "C:/Users/jorda/OneDrive/Documents/GitHub/Hangman/words/words.txt"
-
-func readFile() {
-	var file, err = os.OpenFile(path, os.O_RDONLY, 0644)
-	if err != nil {
-		panic(err)
+func ChooseWord() {
+	data, _ := ioutil.ReadFile("words/words.txt")
+	file := string(data)
+	line := 0
+	temp := strings.Split(file, "\n")
+	l := len(temp)
+	for _, item := range temp {
+		fmt.Println("[", line, "]\t", item)
+		line++
 	}
-	defer file.Close()
-	var text = make([]byte, 1024)
-	for {
-		n, err := file.Read(text)
-		if err != io.EOF {
-			if err != nil {
-				panic(err)
-			}
-		}
-		if n == 0 {
-			break
-		}
-	}
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("le mot sera :", string(text))
+	fmt.Println(l)
 }
 
 func main() {
-	readFile()
+	data, _ := ioutil.ReadFile("words/words.txt")
+	file := string(data)
+	temp := strings.Split(file, "\n")
+	l := len(temp)
+	ChooseWord()
+	rand.Seed(time.Now().UnixNano())
+	fmt.Println(rand.Intn(l))
 }
