@@ -1,35 +1,42 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Menu() {
 	var answer int
-
+	fmt.Println("Hangman\n")
 	fmt.Println("----- Menu -----")
-	fmt.Println("1. Easy")
-	fmt.Println("2. Hard\n")
-	fmt.Println("Choose a number difficulty")
+	fmt.Println("1. Play")
+	fmt.Println("2. Rules")
+	fmt.Println("----------------")
+	fmt.Println("Choose a number")
 	fmt.Scanf("%d", &answer)
+
 	chooseDifficulty(answer)
+}
+func Rules() {
+	fmt.Print()
 }
 
 func chooseDifficulty(answer int) {
-	switch answer {
-	case 1:
-		Easy()
-	case 2:
-		Hard()
-	default:
-		fmt.Print("Not valid number")
+	if answer == 1 {
+		Game()
+	} else if answer == 2 {
+		Rules()
+	} else {
+		fmt.Print("Not possible")
 	}
 }
 
-func Easy() {
-	fmt.Print("Easy")
-}
+func Game() {
+	word := "Hello"
+	fmt.Println("Good Luck, you have 10 attempts")
+	fmt.Println("Choose :")
+	for ,el := range word {
 
-func Hard() {
-	fmt.Print("Hard")
+	}
 }
 
 func main() {
