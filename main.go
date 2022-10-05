@@ -19,5 +19,5 @@ func readFile() {
 }
 
 func main() {
-	readFile
+	readFile()
 }
