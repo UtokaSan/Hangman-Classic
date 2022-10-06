@@ -8,18 +8,21 @@ import (
 )
 
 func Random(nbr int) int {
-	//rand.Seed(time.Now().UnixNano()) Pour random tout le temps
 	return rand.Intn(nbr)
 }
-func readFile() {
-	data, _ := ioutil.ReadFile("words/words.txt")
+func test() {
+	word := readFile("words/word.txt")
+	fmt.Print(word)
+}
+func readFile(fileAccess string) string {
+	data, _ := ioutil.ReadFile(fileAccess)
 	str := string(data)
 	split := strings.Split(str, "\n")
 	random := Random(len(split))
 	word := split[random]
-	fmt.Print(word)
+	return word
 }
 
 func main() {
-	readFile()
+	test()
 }
