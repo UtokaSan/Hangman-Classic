@@ -7,13 +7,6 @@ import (
 	"strings"
 )
 
-type HangmanData struct { // Faire quelque chose avec la structure normalement c'est pour aider
-	word             string
-	toFind           string
-	attempts         int
-	hangmanPositions [10]string
-}
-
 func Random(nbr int) int {
 	return rand.Intn(nbr)
 }
@@ -21,8 +14,17 @@ func test() {
 	input := 0
 	word := readFile("words/words.txt")
 	fmt.Println(word)
-	str := string(word[len(word)/2-1]) // transforme en string et prends la longueur du mot puis fais un calculs
+	str := string(word[len(word)/2-1])
 	fmt.Println(str)
+	for _, el := range word {
+		strToInt := string(el)
+		if strToInt == str {
+			fmt.Print(str)
+		}
+		el = 95
+		strToInt2 := string(el)
+		fmt.Print(strToInt2)
+	}
 	fmt.Scanf("%s", &input)
 }
 func readFile(fileAccess string) string {
