@@ -19,11 +19,12 @@ func test() {
 	for _, el := range word {
 		strToInt := string(el)
 		if strToInt == str {
-			fmt.Print(str)
+			fmt.Print(strToInt)
+		} else {
+			el = 95
+			strToInt2 := string(el)
+			fmt.Print(strToInt2)
 		}
-		el = 95
-		strToInt2 := string(el)
-		fmt.Print(strToInt2)
 	}
 	fmt.Scanf("%s", &input)
 }
