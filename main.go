@@ -18,7 +18,7 @@ func game() {
 	fmt.Println("Good luck, you have 10 attempts")
 	fmt.Print("\nChoose : ")
 	fmt.Scanf("%s", &input)
-	for _, el := range word {
+	for _, el := range word { // faire une boucle tant que ce n'est pas le mot demandé
 		strToInt := string(el)
 		if strToInt == str {
 			fmt.Print(strToInt)
