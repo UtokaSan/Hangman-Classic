@@ -10,15 +10,19 @@ import (
 func Random(nbr int) int {
 	return rand.Intn(nbr)
 }
-func test() {
-	input := 0
+func game() {
+	input := ""
 	word := readFile("words/words.txt")
 	fmt.Println(word)
 	str := string(word[len(word)/2-1])
-	fmt.Println(str)
+	fmt.Println("Good luck, you have 10 attempts")
+	fmt.Print("\nChoose : ")
+	fmt.Scanf("%s", &input)
 	for _, el := range word {
 		strToInt := string(el)
 		if strToInt == str {
+			fmt.Print(strToInt)
+		} else if strToInt == input {
 			fmt.Print(strToInt)
 		} else {
 			el = 95
@@ -26,7 +30,6 @@ func test() {
 			fmt.Print(strToInt2)
 		}
 	}
-	fmt.Scanf("%s", &input)
 }
 func readFile(fileAccess string) string {
 	data, _ := ioutil.ReadFile(fileAccess)
@@ -38,5 +41,5 @@ func readFile(fileAccess string) string {
 }
 
 func main() {
-	test()
+	game()
 }
