@@ -14,16 +14,16 @@ func Random(nbr int) int {
 
 // faire une boucle pour répéter l'input à chaque fois
 func ToFind(word string, str string, input string) {
-	for _, el := range word {
-		strToInt := string(el)
-		if strToInt == str {
-			fmt.Print(strToInt)
-		} else if strToInt == input {
-			fmt.Print(strToInt)
-		} else {
-			el = 95
-			strToInt2 := string(el)
-			fmt.Print(strToInt2)
+	for i := 0; i < len(word); i++ {
+		strToInt := string(word[i])
+		strToInt = "_"
+		fmt.Print(strToInt)
+		fmt.Scanf("%s", input)
+		if string(word[i]) == str {
+			fmt.Print(str)
+		}
+		if string(word[i]) == input {
+			fmt.Print(input)
 		}
 	}
 }
