@@ -11,21 +11,19 @@ import (
 func Random(nbr int) int {
 	return rand.Intn(nbr)
 }
+func test(word string, str string, input string) {
+}
 
-// faire une boucle pour répéter l'input à chaque fois
-func ToFind(word string, str string, input string) {
+// function pour afficher
+func ToFind(word string, str string, input string) bool {
 	for i := 0; i < len(word); i++ {
-		strToInt := string(word[i])
-		strToInt = "_"
-		fmt.Print(strToInt)
-		fmt.Scanf("%s", input)
-		if string(word[i]) == str {
+		if strings.Contains(string(word[i]), str) {
 			fmt.Print(str)
-		}
-		if string(word[i]) == input {
-			fmt.Print(input)
+		} else if strings.Contains(string(word[i]), input) {
+			return true
 		}
 	}
+	return false
 }
 
 func game() {
@@ -36,8 +34,8 @@ func game() {
 	str := string(word[len(word)/2-1])
 	fmt.Println("Good luck, you have 10 attempts")
 	fmt.Print("\nChoose : ")
-	fmt.Scanf("%s", &input)
 	ToFind(word, str, input)
+	test(word, str, input)
 }
 
 func readFile(fileAccess string) string {
