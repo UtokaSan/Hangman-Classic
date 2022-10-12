@@ -4,37 +4,43 @@ import (
 	"fmt"
 	"io/ioutil"
 	"math/rand"
-	"os"
 	"strings"
 )
 
 func Random(nbr int) int {
 	return rand.Intn(nbr)
 }
+
+// faire une boucle pour répéter l'input à chaque fois
 func test(word string, str string, input string) {
+	for Printlen(word, str, input) == true {
+		fmt.Scanf("%s", &input)
+	}
 }
 
 // function pour afficher
-func ToFind(word string, str string, input string) bool {
+func Printlen(word string, str string, input string) bool {
+	valid := false
 	for i := 0; i < len(word); i++ {
-		if strings.Contains(string(word[i]), str) {
+		if string(word[i]) == str {
 			fmt.Print(str)
-		} else if strings.Contains(string(word[i]), input) {
-			return true
+		} else if string(word[i]) == input {
+			fmt.Print(input)
+		} else {
+			fmt.Print("_")
+			valid = true
 		}
 	}
-	return false
+	return valid
 }
 
 func game() {
 	input := ""
-	args := os.Args[1]
-	word := readFile(args)
+	word := readFile("words/words.txt")
 	fmt.Println(word)
 	str := string(word[len(word)/2-1])
 	fmt.Println("Good luck, you have 10 attempts")
 	fmt.Print("\nChoose : ")
-	ToFind(word, str, input)
 	test(word, str, input)
 }
 
