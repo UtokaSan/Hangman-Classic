@@ -2,7 +2,6 @@ package main
 
 import (
 	"math/rand"
-	"time"
 )
 
 type HangmanData struct {
@@ -13,7 +12,6 @@ type HangmanData struct {
 }
 
 func Random(nbr int) int {
-	rand.Seed(time.Now().UnixNano())
 	return rand.Intn(nbr)
 }
 
