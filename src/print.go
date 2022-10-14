@@ -1,17 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
-func Printlen(word string, str string, input string) bool {
+// Vérifie si il y a toujours des tirets
+func Printlen(word string) bool {
 	for _, el := range word {
-		transformString := string(el)
-		if transformString == input {
-			fmt.Print(input)
-		} else if transformString == str {
+		if strings.Contains(string(el), "_") {
+			return false
+		}
+	}
+	return true
+}
+
+// Print le len et les tirets
+func test(word string, str string, input string) {
+	for _, el := range word {
+		if strings.Contains(string(el), str) {
 			fmt.Print(str)
+		} else if strings.Contains(string(el), input) {
+			fmt.Print(input)
 		} else {
 			fmt.Print("_")
 		}
 	}
-	return false
+	l := Printlen(word)
+	fmt.Print(l)
 }
