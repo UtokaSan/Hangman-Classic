@@ -6,31 +6,37 @@ import (
 )
 
 // Vérifie si il y a toujours des tirets
-func VerifyDash(word string) bool {
+func VerifyDash(word string, input string) bool {
+	found := true
 	for _, el := range word {
 		if strings.Contains(string(el), "_") {
-			return false
+			found = false
 		}
 	}
-	return true
+	if found == false {
+		fmt.Scanf("%s", &input)
+	}
+	return found
 }
 
 // Print le len et les tirets
-func test(word string, str string, input string) {
-	input = strings.ToLower(input)
+func display(word string, str string, input string) string {
 	for _, el := range word {
 		if strings.Contains(string(el), str) {
-			word = str
-			fmt.Print(str)
-		} else if strings.Contains(string(el), input) {
-			word = input
-			fmt.Print(input)
+			fmt.Print(string(el))
 		} else {
-			word = "_"
-			fmt.Print(word)
+			fmt.Print("_")
 		}
-		if VerifyDash(word) == false {
-			fmt.Scanf("%s", &input)
+	}
+	RevealLetter(word, input)
+	fmt.Print(VerifyDash(word, input))
+	return word
+}
+
+func RevealLetter(word string, input string) {
+	for i := 0; i < len(word); i++ {
+		if string(word[i]) == input {
+
 		}
 	}
 }

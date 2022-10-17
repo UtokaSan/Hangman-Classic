@@ -13,5 +13,5 @@ func game() {
 	fmt.Println("Good luck, you have 10 attempts")
 	fmt.Print("\nChoose : ")
 	fmt.Scanf("%s", &input)
-	test(hangman.Word, str, input)
+	display(hangman.Word, str, input)
 }
