@@ -1,41 +1,44 @@
-package main
++package main
 
 import (
-	"bufio"
-	"fmt"
-	"io"
-	"log"
-	"os"
+"fmt"
+"io/ioutil"
+"os"
 )
 
 func main() {
 
-	f, err := os.Open("words/hangman.txt")
+mydata := []byte("All the data I wish to write to a file\n")
 
-	if err != nil {
-		log.Fatal(err)
-	}
+// the WriteFile method returns an error if unsuccessful
+err := ioutil.WriteFile("myfile.data", mydata, 0777)
+// handle this error
+if err != nil {
+// print it out
+fmt.Println(err)
+}
 
-	defer f.Close()
+data, err := ioutil.ReadFile("myfile.data")
+if err != nil {
+fmt.Println(err)
+}
 
-	reader := bufio.NewReader(f)
-	buf := make([]byte, 1)
-	fmt.Print(buf)
+fmt.Print(string(data))
 
-	for {
-		n, err := reader.Read(buf)
-		if err != nil {
+f, err := os.OpenFile("myfile.data", os.O_WRONLY|os.O_APPEND, 0777)
+if err != nil {
+panic(err)
+}
+defer f.Close()
 
-			if err != io.EOF {
+data, err = ioutil.ReadFile("test.txt")
+if err != nil {
+fmt.Println(err)
+}
+if _, err = f.WriteString("new data that wasn't there originally\n"); err != nil {
+panic(err)
+}
 
-				log.Fatal(err)
-			}
+fmt.Print(string(data))
 
-			break
-		}
-
-		fmt.Print(string(buf[0:n]))
-	}
-
-	fmt.Println()
 }
