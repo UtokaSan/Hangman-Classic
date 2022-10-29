@@ -6,12 +6,12 @@ import (
 
 func game() {
 	var hangman HangmanData
-	input := ""
 	hangman.Word = Dictionnary("words/words.txt")
 	fmt.Println(hangman.Word)
-	str := string(hangman.Word[len(hangman.Word)/2-1])
+	hangman.Str = string(hangman.Word[len(hangman.Word)/2-1])
 	fmt.Println("Good luck, you have 10 attempts")
 	fmt.Print("\nChoose : ")
+	input := ""
 	fmt.Scanf("%s", &input)
-	display(hangman.Word, str, input)
+	makeSlice(hangman.Word, input)
 }

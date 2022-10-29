@@ -6,7 +6,7 @@ import (
 
 type HangmanData struct {
 	Word            string
-	ToFind          string
+	Str             string
 	Attempts        int
 	HangmanPosition []string
 }

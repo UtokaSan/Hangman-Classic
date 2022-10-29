@@ -1,42 +1,26 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+func IsComplete(word string) {
 
-// Vérifie si il y a toujours des tirets
-func VerifyDash(word string, input string) bool {
-	found := true
-	for _, el := range word {
-		if strings.Contains(string(el), "_") {
-			found = false
-		}
-	}
-	if found == false {
-		fmt.Scanf("%s", &input)
-	}
-	return found
 }
 
-// Print le len et les tirets
-func display(word string, str string, input string) string {
-	for _, el := range word {
-		if strings.Contains(string(el), str) {
-			fmt.Print(string(el))
-		} else {
-			fmt.Print("_")
-		}
+func makeSlice(word string, input string) []string {
+	var tab []string
+	if IsInputValid(word, input) == true {
+		tab = append(tab, input)
 	}
-	RevealLetter(word, input)
-	fmt.Print(VerifyDash(word, input))
-	return word
+	return tab
 }
 
-func RevealLetter(word string, input string) {
-	for i := 0; i < len(word); i++ {
-		if string(word[i]) == input {
-
+func IsInputValid(word string, input string) bool {
+	if len(input) == 1 {
+		for _, letter := range word {
+			if string(letter) == input {
+				return true
+			}
 		}
+	} else {
+		return input == word
 	}
+	return false
 }
