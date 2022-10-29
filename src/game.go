@@ -14,4 +14,5 @@ func game() {
 	input := ""
 	fmt.Scanf("%s", &input)
 	makeSlice(hangman.Word, input)
+	Display(hangman.Word, hangman.Str)
 }

@@ -1,7 +1,22 @@
 package main
 
+import (
+	"fmt"
+	"strings"
+)
+
 func IsComplete(word string) {
 
+}
+
+func Display(word string, str string) {
+	for _, letter := range word {
+		if strings.Contains(string(letter), str) {
+			fmt.Print(str)
+		} else {
+			fmt.Print("_")
+		}
+	}
 }
 
 func makeSlice(word string, input string) []string {
