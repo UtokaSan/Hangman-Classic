@@ -5,28 +5,24 @@ import (
 	"strings"
 )
 
-func IsComplete(word string) {
-
+func IsHangmanComplete(word string, letters string) bool {
+	for _, letter := range word {
+		if !strings.Contains(letters, string(letter)) {
+			return false
+		}
+	}
+	return true
 }
 
-func Display(word string, str string) {
+func Display(word string, letters string) {
 	for _, letter := range word {
-		if strings.Contains(string(letter), str) {
-			fmt.Print(str)
+		if strings.Contains(letters, string(letter)) {
+			fmt.Print(string(letter))
 		} else {
 			fmt.Print("_")
 		}
 	}
 }
-
-func makeSlice(word string, input string) []string {
-	var tab []string
-	if IsInputValid(word, input) == true {
-		tab = append(tab, input)
-	}
-	return tab
-}
-
 func IsInputValid(word string, input string) bool {
 	if len(input) == 1 {
 		for _, letter := range word {
