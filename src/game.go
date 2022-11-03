@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 func game() {
 	var hangman HangmanData
-	hangman.Word = Dictionnary("words/words.txt")
+	file := os.Args[1]
+	hangman.Word = Dictionnary(file)
 	hangman.RandomLetter = string(hangman.Word[len(hangman.Word)/2-1])
 	for !IsHangmanComplete(hangman.Word, hangman.RandomLetter) {
 		fmt.Print("\nChoose : \n")
